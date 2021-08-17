@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sports Leagues</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+</head>
+
+
+<body id="fondo">
+	{% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<div class="container">
+		<div class="row m-0">
+			<div class="col col-sm-11  col-md-11 mt-3 text-center">
+				
+				<h1 class="h1 text-right text-light">Sport orm ejercicio 1</h1>
+			</div>
+			<div class="col col-sm-1 col-md-1 mt-3 d-flex m-0">
+				<a class="h5 text-left p-1 py-2 m-0" href="/second"><span class="badge rounded-pill bg-primary border border-ligth border-2 shadow">ir a ejercicio 2</span></a>
+			</div>
+		</div>
+		<!-- 1. todas lasligas de beisball -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">1... todas las ligas de béisbol</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<!-- <th class="h3">1... todas las ligas de béisbol</th> -->
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for league in ligas_baseball %}
+						<tr class="table-active">
+							<td> {{forloop.counter}}</td>
+							<td> {{league.name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 2... todas las ligas de mujeres -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">2... todas las ligas de mujeres</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<!-- <th class="h3">1... todas las ligas de béisbol</th> -->
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for lm in ligas_mujeres %}
+						<tr class="table-active">
+							<td> {{forloop.counter}}</td>
+							<td> {{lm.name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 3... todas las ligas donde el deporte es cualquier tipo de hockey -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">3... todas las ligas donde el deporte es cualquier tipo de hockey</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<!-- <th class="h3">1... todas las ligas de béisbol</th> -->
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for lh in ligas_hockey %}
+						<tr class="table-active">
+							<td> {{forloop.counter}}</td>
+							<td> {{lh.name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 4... todas las ligas donde el deporte no sea soccer -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">4... todas las ligas donde el deporte no sea soccer</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<!-- <th class="h3">1... todas las ligas de béisbol</th> -->
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for lf in ligas_football %}
+						<tr class="table-active">
+							<td> {{forloop.counter}}</td>
+							<td> {{lf.name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 5... todas las ligas que se llaman "conference" -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">5... todas las ligas que se llaman "conferencias"</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<!-- <th class="h3">1... todas las ligas de béisbol</th> -->
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for lcon in ligas_conferencia %}
+						<tr class="table-active">
+							<td> {{forloop.counter}}</td>
+							<td> {{lcon.name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 6... todas las ligas de la región atlántica" -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">6... todas las ligas de la región atlántica"</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<!-- <th class="h3">1... todas las ligas de béisbol</th> -->
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for latl in ligas_atlantica %}
+						<tr class="table-active">
+							<td> {{forloop.counter}}</td>
+							<td> {{latl.name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 7... todos los equipos con sede en Dallas" -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">7... todos los equipos con sede en Dallas"</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<!-- <th class="h3">1... todas las ligas de béisbol</th> -->
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for ed in equipo_dallas %}
+						<tr class="table-active">
+							<td>{{forloop.counter}}</td>
+							<td> {{ed.location}} {{ed.team_name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 8... todos los equipos nombraron los Raptors" -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">8... todos los equipos nombraron los Raptors"</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<!-- <th class="h3">1... todas las ligas de béisbol</th> -->
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for er in equipo_raptor %}
+						<tr class="table-active">
+							<td>{{forloop.counter}}</td>
+							<td> {{er.location}} {{er.team_name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 9... todos los equipos cuya ubicación incluye "Ciudad" -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">9... todos los equipos cuya ubicación incluye "Ciudad""</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for ec in equipo_ciudad %}
+						<tr class="table-active">
+							<td>{{forloop.counter}}</td>
+							<td>{{ec.location}} {{ec.team_name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 10... todos los equipos cuyos nombres comienzan con "T" -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">10... todos los equipos cuyos nombres <B >comienzan con</B> "T"</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for et in equipo_start_t %}
+						<tr class="table-active">
+							<td>{{forloop.counter}}</td>
+							<td>{{et.location}} {{et.team_name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 11... todos los equipos, ordenados alfabéticamente por ubicación -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">11... todos los equipos, ordenados alfabéticamente por ubicación</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for or in equipos_inOrderA  %}
+						<tr class="table-active">
+							<td>{{forloop.counter}}</td>
+							<td>{{or.location}} {{or.team_name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 12 todos los equipos, ordenados por nombre de equipo en orden alfabético inverso -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">12...todos los equipos, ordenados por nombre de equipo en orden alfabético inverso</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for orz in equipos_inOrderZ %}
+						<tr class="table-active">
+							<td>{{forloop.counter}}</td>
+							<td>{{orz.location}} {{orz.team_name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 13...cada jugador con apellido "Cooper" -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">13...cada jugador con apellido "Cooper" </h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for pcooper in player_Cooper %}
+						<tr class="table-active">
+							<td>{{forloop.counter}}</td>
+							<td>{{pcooper.first_name}} {{pcooper.last_name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 14... cada jugador con nombre "Joshua" -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">14... cada jugador con nombre "Joshua"</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for pJ in player_joshua %}
+						<tr class="table-active">
+							<td>{{forloop.counter}}</td>
+							<td>{{pJ.first_name}} {{pJ.last_name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 15... todos los jugadores con el apellido "Cooper" EXCEPTO aquellos con "Joshua" como primer nombre -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">15... todos los jugadores con el apellido "Cooper" EXCEPTO aquellos con "Joshua" como primer nombre</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for pcej in player_CeJ %}
+						<tr class="table-active">
+							<td>{{forloop.counter}}</td>
+							<td>{{pcej.first_name}} {{pcej.last_name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 16... todos los jugadores con nombre "Alexander" O nombre "Wyatt" -->
+		<div class="row">
+			<div class="col sm-12 col-md-6 mt-5">
+				<h4 class="h4 text-left">16... todos los jugadores con nombre "Alexander" O nombre "Wyatt"</h4>
+				<table class="table table-bordered border-secondary table-success table-hover">
+					<thead>
+						<tr>
+							<th class="h5">N°</th>
+							<th class="h5">Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for pAoWJ in player_AorW %}
+						<tr class="table-active">
+							<td>{{forloop.counter}}</td>
+							<td>{{pAoWJ.first_name}} {{pAoWJ.last_name}}</td>
+						</tr>
+						{% empty %}
+						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
+							work, going
+							<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+						</p>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	
+		<h1>Leagues</h1>
+		<ol>
+			{% for league in leagues %}
+			<li>{{league.name}}</li>
+			{% empty %}
+			<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going
+				<a href="{% url 'make_data' %}">here</a> (but be prepared to wait).
+			</p>
+			{% endfor %}
+		</ol>
+		<h1>Teams</h1>
+		<ol>
+			{% for team in teams %}
+			<li>{{team.location}} {{team.team_name}}</li>
+			{% empty %}
+			<p>No teams found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
+					href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<h1>Players</h1>
+		<ol>
+			{% for player in players %}
+			<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+			<p>No teams found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a
+					href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
