@@ -40,7 +40,7 @@
 						{% for lac in ligas_Ac %}
 						<tr class="table-active">
 							<td> {{forloop.counter}}</td>
-							<td> {{lac.team_name}}</td>
+							<td> {{lac.location}} {{lac.team_name}} {{lac.league.name}}</td>
 						</tr>
 						{% empty %}
 						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
@@ -426,7 +426,7 @@
 						{% for dozen in playerdozen %}
 						<tr class="table-active">
 							<td>{{forloop.counter}}</td>
-							<td>{{dozen.location}} {{dozen.team_name}}</td>
+							<td>{{dozen.location}} {{dozen.team_name}} ({{dozen.count_players}})</td>
 						</tr>
 						{% empty %}
 						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't
@@ -449,15 +449,15 @@
 						<tr>
 							<th class="h5">N°</th>
 							<th class="h5">Resultado</th>
-							<th class="h5">Cantidad de equipos</th>
+							
 						</tr>
 					</thead>
 					<tbody>
 						{% for a in playerall %}
 						<tr class="table-active">
 							<td>{{forloop.counter}}</td>
-							<td>{{a.first_name}} {{a.last_name}}</td>
-							<td>{{a.count_teams}}</td>
+							<td>{{a.first_name}} {{a.last_name}} ({{a.count_teams}})</td>
+							
 						</tr>
 						{% empty %}
 						<p>No leagues found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't

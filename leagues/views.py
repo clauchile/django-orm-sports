@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import League, Team, Player
-from django.db.models import Count
+from django.db.models import Count, Q
 
 from . import team_maker
 
@@ -11,6 +11,7 @@ def index(request):
 		"players": Player.objects.all(),
 		# 'books' : League.objects.filter(sport ="Baseball"),
 		'ligas_baseball' : League.objects.filter(sport__contains ="baseball"),
+		# print(Seller.objects.all().query),
 		'ligas_mujeres' : League.objects.filter(name__contains ="women"),
 		'ligas_hockey' : League.objects.filter(sport__contains ="hockey"),
 		'ligas_football' : League.objects.exclude(sport__contains ="soccer"),
@@ -24,11 +25,13 @@ def index(request):
 		'equipos_inOrderZ' : Team.objects.all().order_by('-team_name'),
 		'player_Cooper' : Player.objects.filter(last_name__contains = 'Cooper'),
 		'player_joshua' : Player.objects.filter(first_name__contains = 'Joshua'),
-		'player_CeJ' : Player.objects.filter(last_name__contains = 'Cooper').exclude(first_name__contains = "Joshua"),
+		'player_CeJ' : Player.objects.filter(last_name = 'Cooper').exclude(first_name__contains = "Joshua"),
 		'player_AorW' : Player.objects.filter(first_name__contains = 'Alexander') |  Player.objects.filter (first_name__contains = 'Wyatt' ).order_by('last_name'),
+		# 'player_AorW' : Player.objects.filter(Q(first_name__contains = 'Alexander') & Q (first_name__contains = 'Wyatt' )).order_by('last_name'),
 
 
 	}
+	print(League.objects.filter(sport__contains ="baseball").query)
 
 	# print(League..filter(sport = "Baseball"))
 	return render(request, "leagues/index.html", context)
@@ -52,18 +55,18 @@ def exerciseTwo(request):
 		#todos con el apellido "Flores" que NO (actualmente) juegan para los Washington Roughriders
 		'playerNf' : Player.objects.filter(last_name__contains = "Flores").exclude(curr_team__team_name ="Roughriders"),
 		#todos los equipos, pasados y presentes, con los que Samuel Evans ha jugado
-		'playerCs' : Team.objects.filter(all_players__first_name__contains = "Samuel") & Team.objects.filter(all_players__last_name__contains = "Evans"),
+		'playerCs' : Team.objects.filter(all_players__first_name__contains = "Samuel", all_players__last_name__contains = "Evans"),
 		#todos los jugadores, pasados y presentes, con los gatos tigre de Manitoba
-		'playerGt' : Player.objects.filter(all_teams__team_name__contains = "Tiger-Cats"),
+		'playerGt' : Player.objects.filter(all_teams__team_name__contains = "Tiger-Cats", all_teams__location = 'Manitoba'),
 		#todos los jugadores que anteriormente estaban (pero que no lo están) con los Wichita Vikings
-		'playerWv' : Player.objects.filter(all_teams__team_name__contains = "Vikings").exclude(curr_team__team_name= "Vikings"),
+		'playerWv' : Player.objects.filter(all_teams__team_name__contains = "Vikings", all_teams__location= "Wichita").exclude(curr_team__team_name= "Vikings"),
 		# cada equipo para el que Jacob Gray jugó antes de unirse a los Oregon Colts
-		'playerJg' : Team.objects.filter(all_players__first_name = "Jacob", all_players__last_name = "Gray").exclude(team_name= "Colts"),
-		#todos llamados "Joshua" que alguna vez han jugado en la Federación Atlántica de Jugadores de Béisbol Amateur
+		'playerJg' : Team.objects.filter(all_players__first_name = "Jacob", all_players__last_name = "Gray").exclude(team_name= "Colts", location ="Oregon"),
+		# 13 todos llamados "Joshua" que alguna vez han jugado en la Federación Atlántica de Jugadores de Béisbol Amateur
 		'playerJ' : Player.objects.filter(first_name = "Joshua").filter(all_teams__league__name__contains = "Atlantic Federation of Amateur Baseball Players") ,
-		#todos los equipos que han tenido 12 o más jugadores, pasados y presentes. (SUGERENCIA: busque la función de anotación de Django).
+		# 14 todos los equipos que han tenido 12 o más jugadores, pasados y presentes. (SUGERENCIA: busque la función de anotación de Django).
 		'playerdozen' : Team.objects.annotate(count_players = Count('all_players')).filter(count_players__gte=12).order_by('location') ,
-		#todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos para los que han jugado
+		# 15 todos los jugadores y el número de equipos para los que jugó, ordenados por la cantidad de equipos para los que han jugado
 		'playerall' : Player.objects.annotate(count_teams = Count('all_teams')).order_by('-count_teams') ,
 	
 	}
